@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TurnNoon · 사업계획서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root {
+    --toss-blue: #3182F6;
+    --toss-blue-hover: #1B64DA;
+    --toss-blue-light: #E8F2FE;
+    --toss-blue-soft: #F4F8FF;
+    --bg: #FFFFFF;
+    --bg-grey: #F9FAFB;
+    --bg-grey-2: #F2F4F6;
+    --line: #E5E8EB;
+    --line-light: #F1F3F5;
+    --text-900: #191F28;
+    --text-700: #4E5968;
+    --text-500: #8B95A1;
+    --text-400: #B0B8C1;
+    --green: #00C896;
+    --red: #FF5A5F;
+    --orange: #FF9500;
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-900);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Navigation ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--line-light);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--toss-blue);
+    letter-spacing: -0.04em;
+  }
+  .logo span { color: var(--text-900); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-700);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--toss-blue); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 120px 32px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--toss-blue-light);
+    color: var(--toss-blue);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--toss-blue); }
+  .hero .sub {
+    font-size: clamp(17px, 2vw, 20px);
+    color: var(--text-700);
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero { padding: 80px 20px 60px; }
+  }
+  .stat-card {
+    background: var(--bg-grey);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+  }
+  .stat-card .label {
+    font-size: 14px;
+    color: var(--text-500);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .stat-card .value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-900);
+    letter-spacing: -0.03em;
+  }
+
+  /* ===== Section base ===== */
+  section {
+    padding: 100px 32px;
+  }
+  @media (max-width: 640px) { section { padding: 64px 20px; } }
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .section-header {
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    display: inline-block;
+    color: var(--toss-blue);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .section-title {
+    font-size: clamp(30px, 4.5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 18px;
+    color: var(--text-700);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  /* ===== Grey section ===== */
+  .grey {
+    background: var(--bg-grey);
+  }
+
+  /* ===== Cards grid ===== */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 880px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 32px;
+    border: 1px solid var(--line-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .grey .card { background: var(--bg); }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  }
+  .card .num {
+    font-size: 14px;
+    color: var(--toss-blue);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .card p {
+    color: var(--text-700);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ===== Feature row ===== */
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 64px 0;
+  }
+  .feature-row.reverse > div:first-child { order: 2; }
+  @media (max-width: 880px) {
+    .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 32px; }
+    .feature-row.reverse > div:first-child { order: 0; }
+  }
+  .feature-row h2 {
+    font-size: clamp(26px, 3.6vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+  .feature-row p {
+    font-size: 17px;
+    color: var(--text-700);
+    line-height: 1.7;
+  }
+  .feature-visual {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--toss-blue-soft) 0%, var(--toss-blue-light) 100%);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===== Mock UI inside visuals ===== */
+  .mock {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    width: 80%;
+    box-shadow: 0 24px 60px rgba(49,130,246,0.18);
+  }
+  .mock-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-light);
+    font-size: 14px;
+  }
+  .mock-row:last-child { border-bottom: none; }
+  .mock-row .l { color: var(--text-500); }
+  .mock-row .v { color: var(--text-900); font-weight: 700; }
+  .mock-title {
+    font-size: 13px;
+    color: var(--text-500);
+    margin-bottom: 12px;
+  }
+  .mock-big {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-900);
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+  .mock-sub {
+    font-size: 13px;
+    color: var(--toss-blue);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .badge-risk {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #FFEBEE;
+    color: var(--red);
+  }
+  .badge-warn { background: #FFF4E5; color: var(--orange); }
+  .badge-ok { background: #E6F8F2; color: var(--green); }
+
+  /* ===== Numbered list ===== */
+  .num-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .num-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line-light);
+  }
+  .grey .num-item { background: var(--bg); }
+  .num-circle {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--toss-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .num-item h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-900);
+  }
+  .num-item p {
+    color: var(--text-700);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ===== Tables ===== */
+  .table-wrap {
+    background: var(--bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line-light);
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    min-width: 560px;
+  }
+  th, td {
+    padding: 18px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--line-light);
+  }
+  th {
+    background: var(--bg-grey-2);
+    font-weight: 700;
+    color: var(--text-700);
+    font-size: 14px;
+  }
+  td { color: var(--text-700); }
+  td.amount {
+    text-align: right;
+    font-weight: 700;
+    color: var(--text-900);
+    font-variant-numeric: tabular-nums;
+  }
+  tr.total td {
+    background: var(--toss-blue-soft);
+    font-weight: 800;
+    color: var(--text-900);
+    border-bottom: none;
+  }
+  tr.negative td.amount { color: var(--red); }
+  tr.positive td.amount { color: var(--green); }
+
+  /* ===== Timeline ===== */
+  .timeline {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 32px;
+    border: 1px solid var(--line-light);
+    overflow-x: auto;
+  }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 200px repeat(7, minmax(70px, 1fr));
+    gap: 0;
+    min-width: 720px;
+  }
+  .tl-header {
+    font-size: 13px;
+    color: var(--text-500);
+    padding: 12px 8px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid var(--line);
+  }
+  .tl-header:first-child { text-align: left; }
+  .tl-task {
+    padding: 18px 8px;
+    font-size: 14px;
+    color: var(--text-900);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line-light);
+    display: flex;
+    align-items: center;
+  }
+  .tl-cell {
+    padding: 18px 8px;
+    border-bottom: 1px solid var(--line-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tl-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--toss-blue);
+    box-shadow: 0 0 0 4px var(--toss-blue-light);
+  }
+  .tl-bar {
+    height: 8px;
+    background: var(--toss-blue);
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  /* ===== Key-value list ===== */
+  .kv {
+    display: grid;
+    gap: 12px;
+  }
+  .kv-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .kv-row:last-child { border-bottom: none; }
+  .kv-key {
+    font-size: 14px;
+    color: var(--text-500);
+    font-weight: 600;
+  }
+  .kv-val {
+    color: var(--text-900);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .kv-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ===== Highlight callout ===== */
+  .callout {
+    background: linear-gradient(135deg, var(--toss-blue) 0%, #1B64DA 100%);
+    border-radius: var(--radius);
+    padding: 56px 48px;
+    color: white;
+    text-align: center;
+    margin: 48px 0;
+  }
+  .callout h3 {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .callout p {
+    font-size: 17px;
+    opacity: 0.92;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* ===== Question bullets ===== */
+  .questions {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .q-item {
+    padding: 20px 24px;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line-light);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 16px;
+    color: var(--text-900);
+    font-weight: 600;
+  }
+  .grey .q-item { background: var(--bg); }
+  .q-icon {
+    color: var(--toss-blue);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* ===== Process steps ===== */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+  @media (max-width: 880px) {
+    .process { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .process { grid-template-columns: 1fr; }
+  }
+  .step {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 24px 20px;
+    border: 1px solid var(--line-light);
+    position: relative;
+  }
+  .grey .step { background: var(--bg); }
+  .step-num {
+    font-size: 13px;
+    color: var(--toss-blue);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .step h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-900);
+    line-height: 1.4;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--text-900);
+    color: white;
+    padding: 64px 32px;
+    text-align: center;
+  }
+  footer .logo {
+    color: var(--toss-blue);
+    margin-bottom: 16px;
+  }
+  footer .logo span { color: white; }
+  footer p {
+    color: var(--text-500);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  /* ===== Fade in animation ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.8s ease both; }
+  .hero-tag { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.15s; }
+  .hero .sub { animation-delay: 0.25s; }
+  .hero-stats { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">Turn<span>Noon</span></div>
+    <ul class="nav-links">
+      <li><a href="#overview">서비스 개요</a></li>
+      <li><a href="#tech">기술</a></li>
+      <li><a href="#market">시장분석</a></li>
+      <li><a href="#finance">재무계획</a></li>
+      <li><a href="#schedule">일정</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <span class="hero-tag">창업 리스크 진단 플랫폼</span>
+  <h1>창업하기 전,<br><span class="accent">실패할 가능성</span>부터<br>확인하세요.</h1>
+  <p class="sub">
+    TurnNoon은 예비 창업자가 큰돈을 투자하기 전에<br>
+    손익분기점·폐업 이력·상권 위험을 데이터로 진단하는 서비스예요.
+  </p>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="label">아이템명</div>
+      <div class="value">TurnNoon</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">서비스 형태</div>
+      <div class="value">웹 플랫폼</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">목표 사용자</div>
+      <div class="value">예비 자영업자</div>
+    </div>
+  </div>
+</header>
+
+<!-- 사업개요 -->
+<section id="overview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">01 · 창업사업개요</span>
+      <h2 class="section-title">왜 TurnNoon이<br>필요할까요?</h2>
+      <p class="section-desc">많은 예비 자영업자가 충분한 데이터 분석 없이 매장을 계약해요. 잘못된 창업 결정은 단순한 사업 실패가 아니라 생계 위기로 이어질 수 있어요.</p>
+    </div>
+
+    <div class="feature-row">
+      <div>
+        <h2>창업 전,<br>리스크를 데이터로<br>진단해요.</h2>
+        <p>
+          공인중개사의 설명, 주변 조언, 프랜차이즈 본사 자료에 의존하는 대신
+          희망 주소지·업종·객단가·월세·인건비·원가율·배달 비중을 입력해보세요.
+          TurnNoon이 손익분기점, 필요 판매량, 폐업 위험도, 상권 위험 요인을 분석해드려요.
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="mock">
+          <div class="mock-title">손익분기점 진단</div>
+          <div class="mock-big">하루 47개</div>
+          <div class="mock-sub">매장이 살아남으려면 매일 팔아야 해요</div>
+          <div class="mock-row">
+            <span class="l">월세</span><span class="v">220만 원</span>
+          </div>
+          <div class="mock-row">
+            <span class="l">인건비</span><span class="v">340만 원</span>
+          </div>
+          <div class="mock-row">
+            <span class="l">위험도</span><span class="v"><span class="badge-risk">위험</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div>
+        <h2>실패는 추천하지<br>않는 서비스.</h2>
+        <p>
+          기존 창업 서비스는 좋은 상권과 유망 업종을 추천하는 데 집중해요.
+          반면 TurnNoon은 위험한 창업 조건을 발견하면 "이 조건은 위험합니다"라고 알려드려요.
+          TurnNoon은 창업 성공 컨설팅이 아닌 <strong style="color:var(--toss-blue);">창업 실패 예방 서비스</strong>예요.
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="mock">
+          <div class="mock-title">반경 500m 폐업 이력</div>
+          <div class="mock-big">12건</div>
+          <div class="mock-sub">최근 2년간 유사 업종이 폐업했어요</div>
+          <div class="mock-row">
+            <span class="l">A 카페</span><span class="v"><span class="badge-risk">11개월</span></span>
+          </div>
+          <div class="mock-row">
+            <span class="l">B 베이커리</span><span class="v"><span class="badge-warn">1년 4개월</span></span>
+          </div>
+          <div class="mock-row">
+            <span class="l">C 디저트</span><span class="v"><span class="badge-risk">8개월</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 핵심 기능 -->
+<section class="grey">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">핵심 기능</span>
+      <h2 class="section-title">3가지 진단으로<br>창업 결정을 도와드려요.</h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>손익분기점<br>계산</h3>
+        <p>월세, 인건비, 객단가, 원가율, 배달 비중을 입력하면 하루에 몇 개를 팔아야 하는지 정확히 계산해드려요.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>폐업 이력<br>분석</h3>
+        <p>희망 주소지 주변에서 과거 유사 업종이 얼마나 폐업했는지 한눈에 확인할 수 있어요.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>부검 리포트<br>제공</h3>
+        <p>폐업한 매장의 비용 구조, 리뷰, 경쟁 매장, 상권 환경을 분석해 왜 실패했는지 보여드려요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 참여 인력 -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">참여인력의 전문성</span>
+      <h2 class="section-title">함께 만드는<br>사람들이에요.</h2>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="num">개발</div>
+        <h3>웹서비스와<br>데이터베이스 구축</h3>
+        <p>손익분기점 계산 기능, 주소지 기반 조회 기능, 리포트 자동 생성 기능, 결제 기능을 개발해요.</p>
+      </div>
+      <div class="card">
+        <div class="num">기획</div>
+        <h3>사용자 문제<br>정의와 설계</h3>
+        <p>예비 창업자가 어떤 상황에서 어떤 판단을 해야 하는지 정리하고, 이를 서비스 기능으로 바꿔요.</p>
+      </div>
+      <div class="card">
+        <div class="num">디자인</div>
+        <h3>복잡한 분석을<br>쉽게 전달</h3>
+        <p>"위험", "주의", "검토 가능"처럼 데이터 전문가가 아니어도 이해할 수 있는 표현을 사용해요.</p>
+      </div>
+      <div class="card">
+        <div class="num">영업·제휴</div>
+        <h3>전문가풀<br>구축</h3>
+        <p>창업 컨설턴트, 세무사, 노무사, 소상공인 지원기관, 창업보육센터, 공유주방, 상가 플랫폼과 협업해요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 사업 내용 및 특성 -->
+<section class="grey">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">사업내용 및 특성</span>
+      <h2 class="section-title">TurnNoon만의<br>5가지 특성</h2>
+    </div>
+
+    <div class="num-list">
+      <div class="num-item">
+        <div class="num-circle">1</div>
+        <div>
+          <h4>창업 전 위험을 알려줘요</h4>
+          <p>창업 결정 전에 데이터로 위험 요인을 미리 확인할 수 있어요.</p>
+        </div>
+      </div>
+      <div class="num-item">
+        <div class="num-circle">2</div>
+        <div>
+          <h4>손익분기점을 쉬운 문장으로 설명해요</h4>
+          <p>복잡한 숫자가 아닌, 직관적인 표현으로 누구나 이해할 수 있게 전달해요.</p>
+        </div>
+      </div>
+      <div class="num-item">
+        <div class="num-circle">3</div>
+        <div>
+          <h4>폐업 사례를 분석해 같은 실패를 줄여요</h4>
+          <p>이미 폐업한 매장의 데이터를 분석해 과거의 실패가 반복되지 않도록 도와드려요.</p>
+        </div>
+      </div>
+      <div class="num-item">
+        <div class="num-circle">4</div>
+        <div>
+          <h4>전문가 상담으로 연결돼요</h4>
+          <p>세무사, 노무사, 창업 컨설턴트와 1:1로 연결되어 실질적인 도움을 받을 수 있어요.</p>
+        </div>
+      </div>
+      <div class="num-item">
+        <div class="num-circle">5</div>
+        <div>
+          <h4>창업자의 생계 손실을 줄이는 데 초점을 둬요</h4>
+          <p>창업을 많이 시키는 것이 아닌, 실패 가능성이 높은 창업을 줄이는 것이 목표예요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 보유기술 -->
+<section id="tech">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">02 · 개발기술</span>
+      <h2 class="section-title">기술개발 수준</h2>
+      <p class="section-desc">기본 모델은 무료 폐업 리스트 조회와 창업 아이템별 유리한 상권 입지 제공, 고급 모델은 부검 리포트와 전문가 매칭 서비스로 구성돼요.</p>
+    </div>
+
+    <div class="process">
+      <div class="step">
+        <div class="step-num">STEP 1</div>
+        <h4>손익분기점<br>계산 기능</h4>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 2</div>
+        <h4>주소지 기반<br>폐업 이력 조회</h4>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 3</div>
+        <h4>상권 위험도<br>리포트</h4>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 4</div>
+        <h4>리뷰 기반<br>부검 리포트</h4>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 5</div>
+        <h4>전문가 매칭<br>및 결제 기능</h4>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 6</div>
+        <h4>지식재산권<br>확보 검토</h4>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>창업 판단을 '감'에서 '데이터'로 바꿔드려요.</h3>
+      <p>창업자는 이제 "이 상권이 좋아 보인다"가 아닌, 하루 판매량·비용 구조·과거 폐업 원인을 확인하고 판단할 수 있어요.</p>
+    </div>
+
+    <h3 style="font-size:24px;font-weight:800;letter-spacing:-0.03em;margin-bottom:20px;">창업자가 반드시 확인해야 할 질문</h3>
+    <div class="questions">
+      <div class="q-item"><span class="q-icon">Q.</span>이 매장은 하루에 몇 개를 팔아야 하나요?</div>
+      <div class="q-item"><span class="q-icon">Q.</span>이 상권에서 유사 업종은 왜 폐업했나요?</div>
+      <div class="q-item"><span class="q-icon">Q.</span>배달 비중이 높아도 수익이 남나요?</div>
+      <div class="q-item"><span class="q-icon">Q.</span>월세와 인건비를 감당할 수 있나요?</div>
+      <div class="q-item"><span class="q-icon">Q.</span>이 아이템은 이 입지에 적합한가요?</div>
+    </div>
+  </div>
+</section>
+
+<!-- 시장분석 -->
+<section id="market" class="grey">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">03 · 시장분석</span>
+      <h2 class="section-title">누가 TurnNoon을<br>사용할 수 있나요?</h2>
+      <p class="section-desc">창업자 개인뿐 아니라 소상공인 지원기관, 창업 교육기관, 세무사, 노무사, 창업 컨설턴트도 활용할 수 있어요. 기관과 전문가는 TurnNoon 리포트로 더 객관적인 상담을 제공할 수 있어요.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="num">B2C</div>
+        <h3>예비 창업자</h3>
+        <p>창업 전 손익분기점과 폐업 위험을 확인하고, 무리한 창업을 피할 수 있어요.</p>
+      </div>
+      <div class="card">
+        <div class="num">B2B</div>
+        <h3>전문가</h3>
+        <p>세무사, 노무사, 창업 컨설턴트가 상담 자료로 활용해 객관적인 컨설팅을 제공해요.</p>
+      </div>
+      <div class="card">
+        <div class="num">B2G</div>
+        <h3>기관</h3>
+        <p>소상공인 지원기관, 창업 교육기관, 창업보육센터가 데이터 기반 지원을 할 수 있어요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 시설확보 및 재무계획 -->
+<section id="finance">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">04 · 시설확보 및 재무계획</span>
+      <h2 class="section-title">생산과<br>시설 확보 계획</h2>
+      <p class="section-desc">TurnNoon은 온라인 플랫폼이므로 제조시설은 필요하지 않아요. 서비스 운영에 필요한 디지털 시설만 확보해요.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-bottom:64px;">
+      <table>
+        <thead>
+          <tr><th style="width:160px;">구분</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong style="color:var(--text-900);">서버</strong></td><td>클라우드 서버, 데이터베이스, 백업 시스템</td></tr>
+          <tr><td><strong style="color:var(--text-900);">개발환경</strong></td><td>개발용 PC, 테스트 기기, 협업 도구</td></tr>
+          <tr><td><strong style="color:var(--text-900);">데이터환경</strong></td><td>상권 데이터, 폐업 이력 데이터, 리뷰 데이터 관리 환경</td></tr>
+          <tr><td><strong style="color:var(--text-900);">운영환경</strong></td><td>고객 문의 관리, 결제 관리, 전문가 매칭 관리</td></tr>
+          <tr><td><strong style="color:var(--text-900);">제휴공간</strong></td><td>전문가 상담을 위한 공유오피스 또는 제휴 공간</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-header">
+      <span class="section-tag">재무 전략</span>
+      <h2 class="section-title">3개년 성장 로드맵</h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="num">2026년</div>
+        <h3>1년차 ·<br>서비스 검증</h3>
+        <p>초기 자금을 개발비, 인건비, 서버비, 데이터 확보비, 마케팅비에 집중 투입해요. 사용자 확보와 서비스 검증에 집중해요.</p>
+      </div>
+      <div class="card">
+        <div class="num">2027년</div>
+        <h3>2년차 ·<br>유료 전환</h3>
+        <p>유료 리포트와 구독 전환율을 높여요. 수익 구조를 다각화하고 안정적인 매출 기반을 다져요.</p>
+      </div>
+      <div class="card">
+        <div class="num">2028년</div>
+        <h3>3년차 ·<br>B2B 확장</h3>
+        <p>전문가용 B2B 서비스와 기관 제휴를 확대해 매출을 본격적으로 끌어올려요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 소요자금 -->
+<section class="grey">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">05 · 재무계획</span>
+      <h2 class="section-title">소요 자금 계획</h2>
+      <p class="section-desc">총 13억 5천만 원의 자금이 필요해요.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-bottom:48px;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:100px;">구분</th>
+            <th>항목</th>
+            <th style="text-align:right;width:140px;">금액 (천원)</th>
+            <th style="width:180px;">비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>임대</td><td>공유오피스 및 상담 공간</td><td class="amount">20,000</td><td>사무공간, 제휴 상담공간</td></tr>
+          <tr><td>시설</td><td>개발 장비 및 테스트 기기</td><td class="amount">30,000</td><td>PC, 테스트 단말</td></tr>
+          <tr><td>시설</td><td>사무 집기 및 협업 환경</td><td class="amount">10,000</td><td>책상, 회의 장비</td></tr>
+          <tr><td>개발</td><td>MVP 및 웹서비스 개발</td><td class="amount">250,000</td><td>프론트엔드, 백엔드, DB</td></tr>
+          <tr><td>개발</td><td>데이터 분석 및 리포트 자동화</td><td class="amount">100,000</td><td>위험도 산출, 리포트 생성</td></tr>
+          <tr><td>데이터</td><td>상권·폐업·리뷰 데이터 확보</td><td class="amount">80,000</td><td>데이터 구매, API 연동</td></tr>
+          <tr><td>서버</td><td>클라우드 서버 및 보안 시스템</td><td class="amount">50,000</td><td>서버, DB, 백업</td></tr>
+          <tr><td>홍보마케팅</td><td>SNS, 홈페이지, 콘텐츠 마케팅</td><td class="amount">200,000</td><td>초기 사용자 확보</td></tr>
+          <tr><td>인건비</td><td>개발자, PM, 디자이너, 영업·운영</td><td class="amount">180,000</td><td>핵심 인력</td></tr>
+          <tr><td>운영</td><td>전문가풀 구축 및 법률·회계 자문</td><td class="amount">50,000</td><td>제휴, 계약, 검수</td></tr>
+          <tr><td>예비비</td><td>사업 지연 및 확장 대응</td><td class="amount">380,000</td><td>추가 데이터, 추가 개발</td></tr>
+          <tr class="total"><td colspan="2">합계</td><td class="amount">1,350,000</td><td>13억 5천만 원</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-header" style="margin-top:48px;">
+      <span class="section-tag">자금 조달</span>
+      <h2 class="section-title">자금 조달 방법</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:140px;">구분</th>
+            <th>항목</th>
+            <th style="text-align:right;width:140px;">금액 (천원)</th>
+            <th style="width:180px;">비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>자기 자금</td><td>창업자 자체 부담금</td><td class="amount">0</td><td>추후 확정</td></tr>
+          <tr><td>금융 차입</td><td>중소벤처진흥공단 청년창업대출</td><td class="amount">100,000</td><td>초기 운영자금</td></tr>
+          <tr><td>정부지원자금</td><td>예비창업패키지 창업지원금</td><td class="amount">50,000</td><td>MVP 개발</td></tr>
+          <tr><td>기타</td><td>신용보증기금</td><td class="amount">200,000</td><td>운영 및 마케팅</td></tr>
+          <tr><td>기타</td><td>시드투자 유치</td><td class="amount">1,000,000</td><td>서비스 확장</td></tr>
+          <tr class="total"><td colspan="2">합계</td><td class="amount">1,350,000</td><td>13억 5천만 원</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 추정손익계산서 -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">추정손익계산서</span>
+      <h2 class="section-title">3년 후<br>흑자 전환을<br>목표로 해요.</h2>
+      <p class="section-desc">2026년 매출 1억 2천만 원에서 2028년 12억 원으로 성장하며, 2028년 24%의 순이익률을 달성할 계획이에요.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th style="text-align:right;">2026년</th>
+            <th style="text-align:right;">%</th>
+            <th style="text-align:right;">2027년</th>
+            <th style="text-align:right;">%</th>
+            <th style="text-align:right;">2028년</th>
+            <th style="text-align:right;">%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--text-900);">매출액</strong></td>
+            <td class="amount">120,000</td><td class="amount">100.0</td>
+            <td class="amount">480,000</td><td class="amount">100.0</td>
+            <td class="amount">1,200,000</td><td class="amount">100.0</td>
+          </tr>
+          <tr>
+            <td>매출원가 (-)</td>
+            <td class="amount">36,000</td><td class="amount">30.0</td>
+            <td class="amount">120,000</td><td class="amount">25.0</td>
+            <td class="amount">300,000</td><td class="amount">25.0</td>
+          </tr>
+          <tr>
+            <td>판매관리비 (-)</td>
+            <td class="amount">300,000</td><td class="amount">250.0</td>
+            <td class="amount">420,000</td><td class="amount">87.5</td>
+            <td class="amount">600,000</td><td class="amount">50.0</td>
+          </tr>
+          <tr class="negative">
+            <td><strong style="color:var(--text-900);">영업이익</strong></td>
+            <td class="amount">-216,000</td><td class="amount">-180.0</td>
+            <td class="amount">-60,000</td><td class="amount">-12.5</td>
+            <td class="amount" style="color:var(--green);">300,000</td><td class="amount" style="color:var(--green);">25.0</td>
+          </tr>
+          <tr>
+            <td>영업외손익 (+,-)</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+          </tr>
+          <tr>
+            <td>경상이익</td>
+            <td class="amount" style="color:var(--red);">-216,000</td><td class="amount" style="color:var(--red);">-180.0</td>
+            <td class="amount" style="color:var(--red);">-60,000</td><td class="amount" style="color:var(--red);">-12.5</td>
+            <td class="amount" style="color:var(--green);">300,000</td><td class="amount" style="color:var(--green);">25.0</td>
+          </tr>
+          <tr>
+            <td>특별손익 (+,-)</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+          </tr>
+          <tr>
+            <td>법인세 등 (-)</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+            <td class="amount">0</td><td class="amount">0.0</td>
+            <td class="amount">60,000</td><td class="amount">5.0</td>
+          </tr>
+          <tr class="total">
+            <td><strong>당기순이익</strong></td>
+            <td class="amount" style="color:var(--red);">-216,000</td><td class="amount" style="color:var(--red);">-180.0</td>
+            <td class="amount" style="color:var(--red);">-60,000</td><td class="amount" style="color:var(--red);">-12.5</td>
+            <td class="amount" style="color:var(--green);">240,000</td><td class="amount" style="color:var(--green);">20.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px;color:var(--text-500);font-size:13px;text-align:right;">단위: 천원</p>
+  </div>
+</section>
+
+<!-- 사업화 추진 일정 -->
+<section id="schedule" class="grey">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">06 · 사업화 추진 일정</span>
+      <h2 class="section-title">단계별<br>실행 계획</h2>
+      <p class="section-desc">2026년 1분기 서비스 기획부터 2027년 3분기 정식 출시 및 B2B 제휴까지 단계적으로 추진해요.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-grid">
+        <div class="tl-header">내용</div>
+        <div class="tl-header">26' 1Q</div>
+        <div class="tl-header">26' 2Q</div>
+        <div class="tl-header">26' 3Q</div>
+        <div class="tl-header">26' 4Q</div>
+        <div class="tl-header">27' 1Q</div>
+        <div class="tl-header">27' 2Q</div>
+        <div class="tl-header">27' 3Q</div>
+
+        <div class="tl-task">서비스 상세 기획</div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+
+        <div class="tl-task">시장조사 및 데이터 항목 정의</div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+
+        <div class="tl-task">MVP 개발</div>
+        <div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+
+        <div class="tl-task">폐업 이력 및 상권 데이터 연동</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+
+        <div class="tl-task">부검 리포트 개발</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div>
+
+        <div class="tl-task">베타서비스 운영</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div>
+
+        <div class="tl-task">유료 리포트 및 구독 결제 적용</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"></div>
+
+        <div class="tl-task">전문가 매칭 서비스 구축</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+
+        <div class="tl-task">정식 서비스 출시</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+
+        <div class="tl-task">B2B·기관 제휴 확대</div>
+        <div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"></div><div class="tl-cell"></div>
+        <div class="tl-cell"><span class="tl-dot"></span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:64px;">
+      <h3 style="font-size:24px;font-weight:800;letter-spacing:-0.03em;margin-bottom:24px;">사업계획 차질 시 대처방안</h3>
+      <div class="grid-3">
+        <div class="card">
+          <div class="num">시나리오 1</div>
+          <h3>데이터 확보가<br>늦어질 경우</h3>
+          <p>공공데이터와 사용자 입력값을 활용한 기본 손익분기점 계산 기능부터 우선 출시해요.</p>
+        </div>
+        <div class="card">
+          <div class="num">시나리오 2</div>
+          <h3>개발 일정이<br>늦어질 경우</h3>
+          <p>핵심 기능(손익분기점·폐업 리스트·위험도 진단)만 먼저 제공하고, 전문가 매칭과 리뷰 분석은 후순위로 개발해요.</p>
+        </div>
+        <div class="card">
+          <div class="num">시나리오 3</div>
+          <h3>유료 전환율이<br>낮을 경우</h3>
+          <p>무료 리포트 쿠폰, 샘플 리포트, 구독 할인, 창업 체크리스트 콘텐츠를 제공해 신뢰와 결제 전환을 높여요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="callout" style="margin:0;">
+      <h3>창업 결정, 데이터로 시작하세요.</h3>
+      <p>TurnNoon은 창업자가 큰돈을 투자하기 전에 위험을 확인하게 해요. 무리한 창업을 피하고, 입지 변경·가격 조정·업종 변경 같은 현실적인 결정을 내릴 수 있어요.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Turn<span>Noon</span></div>
+  <p>창업 리스크 진단 플랫폼</p>
+  <p>본 문서는 사업계획서(초안)이며, 시장분석 및 일부 세부 내용은 추후 업데이트될 예정입니다.</p>
+</footer>
+
+</body>
+</html>
